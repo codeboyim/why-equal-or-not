@@ -5,28 +5,36 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Dig in a bit to know why a value is (or not) equal to another in JavaScript</title>
-    <meta name="description" content="An interactive getting started guide for Brackets.">
-    <link rel="stylesheet" href="main.css">
+    <meta name="description" content="An interactive demo to explain the sameness in JavaScript.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script async src='contentloaded.js'></script>
+    <script async src='algorithms.js'></script>
 </head>
 
 <body>
     <header>
         <h1>Why Equal or Not?</h1>
-        <h2>A simple demo of the sameness in JavaScript</h2>
+        <h2>The sameness in JavaScript</h2>
     </header>
     <section>
         <h3>type in two values to evaluate</h3>
         <div>
-            <input type="text">
-            <select></select>
-            <input type="text">
-            <input type="text" readonly>
+            <input type="text" id="input_x">
+            <select id="operators">
+                <option>==</option>
+                <option>===</option>
+                <option>is</option>
+            </select>
+            <input type="text" id="input_y">
+            <input type="text" id="output" readonly>
         </div>
     </section>
     <section>
         <h3>why?</h3>
         <div></div>
     </section>
+    <script async src="app.js"></script>
 </body>
 
 </html>
