@@ -1,6 +1,7 @@
 (function (exports) {
 
 
+
     function _isNaN(a) {
         return typeof a == 'number' && a.toString() == 'NaN';
     }
@@ -34,9 +35,10 @@
     function AbstractEqual(input_x, input_y) {
         var r1, r2,
             x, y;
-        eval('x=' + input_x + ';');
-        eval('y=' + input_y + ';');
-
+               
+        x = eval(input_x);
+        y = eval(input_y);
+        
         r1 = x == y;
         r2 = AbstractEqualityAlgorithm(input_x, input_y);
 
