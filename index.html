@@ -20,13 +20,13 @@
         <section>
             <h3>type in two values to evaluate</h3>
             <fieldset>
-                <input type="text" id="input_x" maxlength="10">
+                <div id="input_x" contenteditable="true"></div>
                 <select id="operators">
                     <option>==</option>
                     <option>===</option>
                     <option>is</option>
                 </select>
-                <input type="text" id="input_y">
+                <div id="input_y" contenteditable="true"></div>
                 <span>=</span>
                 <input type="text" id="output" readonly placeholder="?" value="false">
             </fieldset>
@@ -36,7 +36,7 @@
             <div></div>
         </section>
     </article>
-    <script async src="js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
