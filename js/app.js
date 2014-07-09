@@ -21,14 +21,11 @@
     function eventHandler(e) {
 
         try {
-            console.log(e.target.getAttribute('maxLength'));
-            if (e.target.tagName === 'INPUT') {
-                if (e.target.value.length == e.target.getAttribute('maxLength')) {
-                    return;
-                }
-                recalFontSize(e.target);
+
+            if (e.target.tagName === 'DIV') {
+                        recalFontSize(e.target);
             }
-            output.value = operations[operators.selectedOptions[0].text](input_x.value, input_y.value);
+            output.value = operations[operators.selectedOptions[0].text](input_x.textContent, input_y.textContent);
         } catch (error) {
             output.value = '';
             console.error(error);
@@ -51,6 +48,7 @@
         var fs;
         adjusingFontSize.input = input;
         adjusingFontSize.fontSize = Number((fs = window.getComputedStyle(input).fontSize).substring(0, fs.length - 2));
+        
         adjusingFontSize();
     }
 
@@ -59,6 +57,7 @@
             scrollWidth = input.scrollWidth,
             fs = adjusingFontSize.fontSize;
 
+        input.style.color='transparent';
         if (scrollWidth > clientWidth) {
             fs = fs - 5;
         } else {
@@ -67,14 +66,18 @@
                 fs = fs + 10;
             } else {
                 adjusingFontSize.tryEnlarge = false;
+                input.style.color='inherit';
                 return;
             }
         }
 
         adjusingFontSize.fontSize = fs;
         input.style.fontSize = fs + 'px';
-
-        window.requestAnimationFrame(adjusingFontSize);
+        input.style.lineHeight = fs+'px';
+        adjusingFontSize();
+//        setTimeout(function(){
+//        window.requestAnimationFrame(adjusingFontSize);
+//        }, 50);
     }
 
 
