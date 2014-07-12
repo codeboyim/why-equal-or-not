@@ -18,12 +18,44 @@
     input_y.addEventListener('keyup', eventHandler, false);
     operators.addEventListener('change', eventHandler, false);
 
-    function eventHandler(e) {
+    function adjusingFontSize() {
+        var input = adjusingFontSize.input,
+            scrollWidth = input.scrollWidth,
+            fs = adjusingFontSize.fontSize;
 
+        input.style.color = 'transparent';
+        if (scrollWidth > clientWidth) {
+            fs = fs - 5;
+        } else {
+            if (!adjusingFontSize.tryEnlarge && fs < originalFontSize) {
+                adjusingFontSize.tryEnlarge = true;
+                fs = fs + 10;
+            } else {
+                adjusingFontSize.tryEnlarge = false;
+                input.style.color = 'inherit';
+                return;
+            }
+        }
+
+        adjusingFontSize.fontSize = fs;
+        input.style.fontSize = fs + 'px';
+        input.style.lineHeight = fs + 'px';
+        adjusingFontSize();
+    }
+
+    function recalFontSize(input) {
+        var fs;
+        adjusingFontSize.input = input;
+        adjusingFontSize.fontSize = Number((fs = window.getComputedStyle(input).fontSize)
+            .substring(0, fs.length - 2));
+        adjusingFontSize();
+    }
+
+    function eventHandler(e) {
         try {
 
             if (e.target.tagName === 'DIV') {
-                        recalFontSize(e.target);
+                recalFontSize(e.target);
             }
             output.value = operations[operators.selectedOptions[0].text](input_x.textContent, input_y.textContent);
         } catch (error) {
@@ -44,41 +76,7 @@
         return algorithms.sameValue(raw_x, raw_y).result;
     }
 
-    function recalFontSize(input) {
-        var fs;
-        adjusingFontSize.input = input;
-        adjusingFontSize.fontSize = Number((fs = window.getComputedStyle(input).fontSize).substring(0, fs.length - 2));
-        
-        adjusingFontSize();
-    }
 
-    function adjusingFontSize() {
-        var input = adjusingFontSize.input,
-            scrollWidth = input.scrollWidth,
-            fs = adjusingFontSize.fontSize;
-
-        input.style.color='transparent';
-        if (scrollWidth > clientWidth) {
-            fs = fs - 5;
-        } else {
-            if (!adjusingFontSize.tryEnlarge && fs < originalFontSize) {
-                adjusingFontSize.tryEnlarge = true;
-                fs = fs + 10;
-            } else {
-                adjusingFontSize.tryEnlarge = false;
-                input.style.color='inherit';
-                return;
-            }
-        }
-
-        adjusingFontSize.fontSize = fs;
-        input.style.fontSize = fs + 'px';
-        input.style.lineHeight = fs+'px';
-        adjusingFontSize();
-//        setTimeout(function(){
-//        window.requestAnimationFrame(adjusingFontSize);
-//        }, 50);
-    }
 
 
 
