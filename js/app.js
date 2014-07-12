@@ -20,27 +20,35 @@
 
     function adjusingFontSize() {
         var input = adjusingFontSize.input,
-            scrollWidth = input.scrollWidth,
-            fs = adjusingFontSize.fontSize;
+            scrollWidth,
+            fs;
+
+        if (!input){
+            window.requestAnimationFrame(adjusingFontSize);
+            return;
+        }
+
+        scrollWidth = input.scrollWidth;
+        fs = adjusingFontSize.fontSize;
 
         input.style.color = 'transparent';
         if (scrollWidth > clientWidth) {
-            fs = fs - 5;
+            fs = fs - 2;
         } else {
             if (!adjusingFontSize.tryEnlarge && fs < originalFontSize) {
                 adjusingFontSize.tryEnlarge = true;
                 fs = fs + 10;
             } else {
                 adjusingFontSize.tryEnlarge = false;
-                input.style.color = 'inherit';
-                return;
+                input.style.color = 'inherit';  
+                 adjusingFontSize.input=false;
             }
         }
 
         adjusingFontSize.fontSize = fs;
         input.style.fontSize = fs + 'px';
         input.style.lineHeight = fs + 'px';
-        adjusingFontSize();
+        window.requestAnimationFrame(adjusingFontSize);
     }
 
     function recalFontSize(input) {
@@ -48,7 +56,6 @@
         adjusingFontSize.input = input;
         adjusingFontSize.fontSize = Number((fs = window.getComputedStyle(input).fontSize)
             .substring(0, fs.length - 2));
-        adjusingFontSize();
     }
 
     function eventHandler(e) {
@@ -76,7 +83,7 @@
         return algorithms.sameValue(raw_x, raw_y).result;
     }
 
-
+    adjusingFontSize();
 
 
 

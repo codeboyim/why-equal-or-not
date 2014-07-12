@@ -1,9 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Qwigley&text=Why%20Equal%20or%20Not);
-body {
+ body {
     font-size: 1em;
 }
-*:focus{
-    outline:0;
+*:focus {
+    outline: 0;
 }
 header,
 article {
@@ -24,8 +24,8 @@ h1 {
 h2 {
     font-size: 24px;
     float: right;
-    margin:5px 0;
-    font-weight:normal;
+    margin: 5px 0;
+    font-weight: normal;
 }
 h3 {
     float: left;
@@ -35,36 +35,36 @@ h3 {
     margin: 50px 0;
 }
 fieldset {
-    font-size:1.2em;
+    font-size: 1.2em;
     vertical-align: middle;
     margin: 50px 0;
-    padding:30px 20px;
+    padding: 30px 20px;
 }
-
-div[contenteditable]{
+fieldset > * {
+    float: left;
+}
+div[contenteditable] {
     border-bottom: solid 1px black;
     font-size: 96px;
-    height:96px;
+    height: 96px;
     padding: 0;
     width: 200px;
     transition: color 100ms;
-    -webkit-transition:color 100ms;
-    overflow:visible;
-    display:table-cell;
+    -webkit-transition: color 100ms;
     white-space: nowrap;
-    position:relative;
-
+    position: relative;
 }
-div[contenteditable] span{
-        vertical-align:bottom;
-    position:absolute;
-    bottom:0;
+div[contenteditable]::before {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align:middle;
 }
-input[type=text][readonly]{
-    text-align:center;
-    font-size:0.8em;
-    border-bottom-width:0;
-    width:80px;
+input[type=text][readonly] {
+    text-align: center;
+    font-size: 0.8em;
+    border-bottom-width: 0;
+    width: 80px;
 }
 input:focus {
     outline: 0;
