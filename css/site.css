@@ -52,9 +52,14 @@ div[contenteditable]{
     overflow:visible;
     display:table-cell;
     white-space: nowrap;
-    vertical-align:middle;
-}
+    position:relative;
 
+}
+div[contenteditable] span{
+        vertical-align:bottom;
+    position:absolute;
+    bottom:0;
+}
 input[type=text][readonly]{
     text-align:center;
     font-size:0.8em;
