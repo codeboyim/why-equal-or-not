@@ -15,7 +15,7 @@
     }
 
     function _isNull(a) {
-        return typeof a == 'object' && a == null;
+        return typeof a == 'object' && a === null;
     }
 
     function _isUndefined(a) {
@@ -25,7 +25,7 @@
 
     function _toPrimitive(a) {
 
-        if (typeof a == 'object' && a != null) {
+        if (typeof a == 'object' && a !== null) {
             return a.toString();
         }
 
@@ -35,10 +35,10 @@
     function AbstractEqual(input_x, input_y) {
         var r1, r2,
             x, y;
-               
+
         x = eval(input_x);
         y = eval(input_y);
-        
+
         r1 = x == y;
         r2 = AbstractEqualityAlgorithm(input_x, input_y);
 
@@ -104,7 +104,7 @@
 
         eval('x=' + input_x + ';');
         eval('y=' + input_y + ';');
-        rules.push(input_x + ' is ' + input_y + '?')
+        rules.push(input_x + ' is ' + input_y + '?');
 
         if (typeof x != typeof y) {
             rules.push('9.12.1: Type(x) is different from Type(y), return false');
@@ -184,14 +184,14 @@
         var x, y, r, rules = [],
             subr;
 
-        eval('x=' + input_x + ';');
-        eval('y=' + input_y + ';');
+        x = eval(input_x);
+        y = eval(input_y);
 
         rules.push(input_x + ' == ' + input_y + '?');
 
         if (typeof x == typeof y) {
 
-            rules.push('11.9.3.1 Type(x) is the same as Type(y), then')
+            rules.push('11.9.3.1 Type(x) is the same as Type(y), then');
 
             switch (typeof x) {
 

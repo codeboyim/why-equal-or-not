@@ -1,6 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Qwigley&text=Why%20Equal%20or%20Not);
- body {
-    font-size: 1em;
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?v=4.1.0');
+    src: url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    color: #2c2c2c;
 }
 *:focus {
     outline: 0;
@@ -12,12 +19,31 @@ article {
     overflow: auto;
 }
 section {
-    font-size: 2.5em;
+    font-size: 36px;
     overflow: auto;
+    margin: 50px 0;
 }
+aside {
+    display: inline-block;
+    height: 25px;
+    font-size: 16px;
+    float: right;
+    clear: right;
+    margin: 10px 0;
+    font-style: italic;
+    color:#3b3b3b;
+}
+aside::before{
+    display: inline;
+    content:'\f0eb';
+    font-family: FontAwesome;
+    margin-right: 10px;
+    color:#e0951e;
+}
+
 h1 {
     font-family: 'Qwigley', cursive;
-    font-size: 8em;
+    font-size: 128px;
     padding: 0;
     margin: 0;
 }
@@ -28,20 +54,22 @@ h2 {
     font-weight: normal;
 }
 h3 {
-    float: left;
     width: 300px;
     display: inline-block;
     vertical-align: middle;
-    margin: 50px 0;
+    margin: 50px 0 0 0;
 }
 fieldset {
     font-size: 1.2em;
-    vertical-align: middle;
-    margin: 50px 0;
+    margin: 50px 0 0 0;
     padding: 30px 20px;
+    display: inline-block;
+    color: #000000;
+    float: right;
+    float: right;
 }
 fieldset > * {
-    float: left;
+    vertical-align: middle;
 }
 div[contenteditable] {
     border-bottom: solid 1px black;
@@ -52,20 +80,69 @@ div[contenteditable] {
     transition: color 100ms;
     -webkit-transition: color 100ms;
     white-space: nowrap;
-    position: relative;
+    display: inline-block;
 }
 div[contenteditable]::before {
     content: '';
     height: 100%;
     display: inline-block;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 input[type=text][readonly] {
     text-align: center;
     font-size: 0.8em;
-    border-bottom-width: 0;
+    border: none;
     width: 80px;
 }
 input:focus {
     outline: 0;
+}
+section:nth-of-type(1) > * {
+    vertical-align: bottom;
+}
+section:nth-of-type(2) > div {
+    font-size: 18px;
+    text-align: center;
+}
+section:nth-of-type(2) > div:before {
+    font-family: FontAwesome;
+    vertical-align: middle;
+    font-size: 128px;
+    width: 128px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 20px;
+}
+section:nth-of-type(2) ul {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 20px;
+    list-style-type: none;
+}
+section:nth-of-type(2) ul li{
+    margin:10px 0;
+}
+.true {
+    color: #22f722;
+}
+.false {
+    color: #f23131;
+}
+section:nth-of-type(2) .true{
+    color: #101daa;
+}
+section:nth-of-type(2) .true::before {
+    content: '\f118';
+}
+section:nth-of-type(2) .false{
+    color: #101daa;
+}
+section:nth-of-type(2) .false::before {
+    content: '\f11a';
+}
+section:nth-of-type(2) .warn {
+    color: #eb401b;
+}
+section:nth-of-type(2) .warn::before {
+    content: '\f071';
 }
