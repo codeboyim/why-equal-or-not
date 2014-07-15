@@ -82,7 +82,7 @@
 
         if (typeof Object.is == 'undefined') {
             Object.is = function (a, b) {
-                return SameValueAlgorithm(a, b);
+                return SameValueAlgorithm(a, b).result;
             };
         }
 
