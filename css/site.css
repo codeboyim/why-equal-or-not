@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Qwigley&text=Why%20Equal%20or%20Not);
+@import url(http://fonts.googleapis.com/css?family=Qwigley&text=Why%20Equal%20or%20Not%20?);
 @font-face {
     font-family: 'FontAwesome';
     src: url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?v=4.1.0');
@@ -15,7 +15,7 @@ body {
 header,
 article {
     width: 980px;
-    margin: 0 auto;
+    margin: 20px auto;
     overflow: auto;
 }
 section {
@@ -54,7 +54,7 @@ h2 {
     font-weight: normal;
 }
 h3 {
-    width: 300px;
+    width: 240px;
     display: inline-block;
     vertical-align: middle;
     margin: 50px 0 0 0;
@@ -65,8 +65,7 @@ fieldset {
     padding: 30px 20px;
     display: inline-block;
     color: #000000;
-    float: right;
-    float: right;
+    float:right;
 }
 fieldset > * {
     vertical-align: middle;
