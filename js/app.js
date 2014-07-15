@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     var input_x = document.getElementById('input_x'),
@@ -72,7 +72,7 @@
         }
 
         try {
-            op = operations[operators.selectedOptions[0].text](input_x.textContent, input_y.textContent);
+            op = operations[(operators.selectedOptions ? operators.selectedOptions[0] : operators.options[operators.selectedIndex]).text](input_x.textContent, input_y.textContent);
         } catch (error) {
             output.value = '';
             output.className = '';
@@ -87,7 +87,7 @@
 
         html = '<ul>';
 
-        op.rules.forEach(function (r) {
+        op.rules.forEach(function(r) {
             html += '<li>' + r + '</li>';
         });
 
@@ -110,9 +110,14 @@
 
     adjusingFontSize();
 
-
     input_x.focus();
-    keyupEvent = new Event('keyup');
+    if (typeof Event === 'function') {
+        keyupEvent = new Event('keyup');
+
+    } else {
+        keyupEvent = document.createEvent('HTMLEvents');
+        keyupEvent.initEvent('keyup', true, false);
+    }
     input_x.dispatchEvent(keyupEvent);
 
 })();
